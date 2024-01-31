@@ -29,7 +29,7 @@ export default function TicketsList() {
             <td>{t.emergency ? "yes" : "no"}</td>
             <td>{t.dateCompleted?.split("T")[0] || "Incomplete"}</td>
             <td>
-              <Link to={`${t.id}`}>Details</Link>
+              <Link to={`/servicetickets/${t.id}`}>Details</Link>
             </td>
           </tr>
         ))}

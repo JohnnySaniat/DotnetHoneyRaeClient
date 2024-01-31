@@ -1,0 +1,109 @@
+import React, { useState, useEffect } from "react";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { createServiceTicket, getCustomers, getEmployees } from "../../data/serviceTicketsData";
+import { useNavigate } from "react-router-dom";
+
+export default function CreateTicket() {
+  const navigate = useNavigate();
+  const [serviceTicketData, setServiceTicketData] = useState({
+    customerId: "",
+    employeeId: "",
+    description: "",
+    emergency: false,
+  });
+
+  const [customers, setCustomers] = useState([]);
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    getCustomers().then((customerData) => setCustomers(customerData));
+    getEmployees().then((employeeData) => setEmployees(employeeData));
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    console.log("Selected value:", value);
+    const inputValue = type === "checkbox" ? checked : value;
+
+    setServiceTicketData({
+      ...serviceTicketData,
+      [name]: inputValue,
+    });
+
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    createServiceTicket(serviceTicketData)
+      .then((newTicket) => {
+        console.log("New service ticket created:", newTicket);
+        navigate("/servicetickets/");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error creating service ticket:", error);
+      });
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <FormGroup>
+        <Label for="customerId">Customer</Label>
+        <Input
+          type="select"
+          name="customerId"
+          id="customerId"
+          onChange={handleInputChange}
+          value={serviceTicketData.customerId}
+        >
+          <option value="" disabled>Select a customer</option>
+          {customers.map((customer) => (
+            <option key={customer.id} value={customer.id}>
+              {customer.name}
+            </option>
+          ))}
+        </Input>
+      </FormGroup>
+      <FormGroup>
+        <Label for="employeeId">Employee</Label>
+        <Input
+          type="select"
+          name="employeeId"
+          id="employeeId"
+          onChange={handleInputChange}
+          value={serviceTicketData.employeeId}
+        >
+          <option value="" disabled>Select an employee</option>
+          {employees.map((employee) => (
+            <option key={employee.id} value={employee.id}>
+              {employee.name}
+            </option>
+          ))}
+        </Input>
+      </FormGroup>
+      <FormGroup>
+        <Label for="description">Description</Label>
+        <Input
+          type="text"
+          name="description"
+          id="description"
+          onChange={handleInputChange}
+          value={serviceTicketData.description}
+        />
+      </FormGroup>
+      <FormGroup check>
+        <Label check>
+          <Input
+            type="checkbox"
+            name="emergency"
+            onChange={handleInputChange}
+            checked={serviceTicketData.emergency}
+          />{" "}
+          Emergency
+        </Label>
+      </FormGroup>
+      <Button type="submit">Create Service Ticket</Button>
+    </Form>
+  );
+}
