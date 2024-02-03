@@ -27,17 +27,11 @@ root.render(
           <Route path=":id" element={<TicketDetails />} />
           <Route path="create" element={<CreateTicket />} />
         </Route>
-      </Route>
-
-      <Route path="/" element={<App />}>
         <Route path="customers" element={<Customers />}>
           <Route index element={<CustomersList />} />
           <Route path="create" element={<CreateCustomer />} />
           <Route path=":id" element={<CustomerDetails />} />
         </Route>
-      </Route>
-
-      <Route path="/" element={<App />}>
         <Route path="employees" element={<Employees />}>
           <Route index element={<EmployeeList />} />
           <Route path="create" element={<CreateEmployee />} />

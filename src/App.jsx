@@ -5,9 +5,15 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <>
-      <Navbar color="light" expand="md">
+      <Navbar className='Navigation' expand="md">
         <Nav navbar>
-          <NavbarBrand href="/">Honey Rae's</NavbarBrand>
+          <NavbarBrand href="/servicetickets">Honey Rae's
+          <img
+          src="https://images.vexels.com/media/users/3/258748/isolated/lists/d5710688f34b82d7826b59cb57188150-honey-pot-cut-out.png"
+          alt="Honey Rae's Logo"
+          style={{ height: '40px', marginRight: '10px' }} // Set the desired height and additional styling
+        />
+          </NavbarBrand>
           <NavItem>
             <NavLink href="/servicetickets">Service Tickets</NavLink>
           </NavItem>
