@@ -1,9 +1,42 @@
-# Honey Rae Client
-This repo is the starting code for the Honey Rae's API explorer chapter in the NSS .NET curriculum. 
+# Honey Rae's Service Ticket Management System
 
-## Setup
-1. Use this template to create a new repo in your own account, and clone the new repo locally. 
-1. Run `npm install` to get all of the project dependencies.
-1. This client assumes that the .NET API is running locally on port `5001` for HTTPS. It is likely that your own API is using a different port. To edit your app's port, change the https profile in `Properties/launchSettings.json` to use 5001 for the https url, and 5000 for the http url.
-1. This app's server is also acting as a proxy server for the Web API, and assumes that all API routes begin with `/api`, as in DeShawn's. You will need to add that to the beginning of the routes of all of the endpoints in your API.  
-1. Then run `npm run dev` to start the application.  
+Welcome to Honey Rae's Service Ticket Management System, a web application built with React for managing service tickets, customers, and employees.
+
+## Table of Contents
+
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Dependencies](#dependencies)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Description
+
+Honey Rae's Service Ticket Management System allows users to create, view, and manage service tickets. The system also provides features for managing customer and employee information. The application uses React for the front end and integrates with a backend service for data management.
+
+## Features
+
+- Create and manage service tickets
+- Assign employees to service tickets
+- View details of a specific service ticket
+- Manage customer and employee information
+- Responsive and user-friendly interface
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/honey-raes-service-ticket-management.git
+
+## Dependencies
+
+- React
+- React Router
+- Reactstrap (Bootstrap components for React)
+- Axios (HTTP client for making API requests)
+
+## Contributing
+
+- Johnny Saniat
