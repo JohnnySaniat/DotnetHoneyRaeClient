@@ -11,11 +11,13 @@ export default function ServiceTickets() {
 
   return (
     <>
-      <h2>Service Tickets</h2>
-      <Button color="primary" onClick={handleAddClick}>
-        Add
-      </Button>
+    <div className='service-form'>
+      <h2 className='ticket-header'> Service Tickets</h2>
+      <Button id="create" color="btn btn-warning" onClick={handleAddClick}>
+        Add a Service Ticket
+      </Button> 
       <Outlet />
+    </div>
     </>
   );
 }

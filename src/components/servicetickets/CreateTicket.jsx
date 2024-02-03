@@ -22,14 +22,12 @@ export default function CreateTicket() {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    console.log("Selected value:", value);
     const inputValue = type === "checkbox" ? checked : value;
 
     setServiceTicketData({
       ...serviceTicketData,
       [name]: inputValue,
     });
-
   };
 
   const handleSubmit = (e) => {
@@ -39,11 +37,14 @@ export default function CreateTicket() {
       .then((newTicket) => {
         console.log("New service ticket created:", newTicket);
         navigate("/servicetickets/");
-        window.location.reload();
       })
       .catch((error) => {
         console.error("Error creating service ticket:", error);
       });
+  };
+
+  const handleCancel = () => {
+    navigate("/servicetickets/");
   };
 
   return (
@@ -103,7 +104,9 @@ export default function CreateTicket() {
           Emergency
         </Label>
       </FormGroup>
-      <Button type="submit">Create Service Ticket</Button>
+      <Button id="submit-ticket" type="submit">Submit Service Ticket</Button>
+
+      <Button id="cancel-ticket" type="button" onClick={handleCancel}>Cancel Service Request</Button>
     </Form>
   );
 }
